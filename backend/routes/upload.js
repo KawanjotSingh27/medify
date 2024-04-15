@@ -8,7 +8,11 @@ const router = Router();
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
-		cb(null, path.resolve('uploads/'));
+		cb(
+			null,
+			path.resolve(path.resolve(__dirname, '..'), '..') +
+				'/frontend/public/uploads/'
+		);
 	},
 	filename: function (req, file, cb) {
 		cb(null, Date.now() + '-' + file.originalname);

@@ -44,7 +44,6 @@ router.post('/login', async (req, res) => {
 			},
 			'secret123'
 		);
-		console.log(token);
 
 		return res.json({ user: token });
 	} catch (error) {
@@ -52,6 +51,5 @@ router.post('/login', async (req, res) => {
 		return res.json({ status: 'error', message: error.message });
 	}
 });
-
 
 module.exports = router;
