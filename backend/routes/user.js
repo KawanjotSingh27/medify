@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
 	try {
 		const body = req.body;
-		const user = await User.find({
+		const user = await User.findOne({
 			email: body.email,
 			password: body.password,
 		});
@@ -44,6 +44,7 @@ router.post('/login', async (req, res) => {
 			},
 			'secret123'
 		);
+		console.log(token);
 
 		return res.json({ user: token });
 	} catch (error) {

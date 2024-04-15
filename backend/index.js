@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const userRouter = require('./routes/user');
+const uploadRouter = require('./routes/upload');
+
+const { authentication } = require('./middleware/authentication');
 
 const app = express();
 
@@ -15,6 +18,7 @@ mongoose
 	.then(() => console.log('MongoDB connected'));
 
 app.use('/user', userRouter);
+app.use('/upload', authentication, uploadRouter);
 
 app.listen(3000, () => {
 	console.log('Server running on port 3000');
