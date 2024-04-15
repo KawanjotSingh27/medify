@@ -44,6 +44,16 @@ router.get('/', async (req, res) => {
 	}
 });
 
+router.delete('/:id', async (req, res) => {
+	try {
+		const { id } = req.params;
+		const deletedRecord = await Upload.findByIdAndDelete(id);
+		return res.json({ deletedRecord });
+	} catch (error) {
+		return res.json({ status: 'error', message: error.message });
+	}
+});
+
 router.get('/:id', async (req, res) => {
 	try {
 		const { id } = req.params;

@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const userRouter = require('./routes/user');
 const uploadRouter = require('./routes/upload');
+const recordRouter = require('./routes/record');
 
 const { authentication } = require('./middleware/authentication');
 
@@ -19,6 +20,7 @@ mongoose
 
 app.use('/user', userRouter);
 app.use('/upload', authentication, uploadRouter);
+app.use('/record', recordRouter);
 
 app.listen(3000, () => {
 	console.log('Server running on port 3000');
